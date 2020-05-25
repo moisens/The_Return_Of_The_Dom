@@ -83,17 +83,100 @@
 
 
 //QUERYSELECTORALL
-let titles = document.querySelectorAll('.title');
-console.log(titles);
-titles[0].textContent = 'Hello';
-titles[1].innerHTML = 'Hello 2'
-
-let odd = document.querySelectorAll('li:nth-child(odd)');
-let even = document.querySelectorAll('li:nth-child(even)');
-for(let i=0; i<odd.length; i++){
-   odd[i].style.backgroundColor = 'lightgrey';
-   even[i].style.backgroundColor = 'darkgrey';
-}
+//let titles = document.querySelectorAll('.title');
+//console.log(titles);
+//titles[0].textContent = 'Hello';
+//titles[1].innerHTML = 'Hello 2'
+//
+//let odd = document.querySelectorAll('li:nth-child(odd)');
+//let even = document.querySelectorAll('li:nth-child(even)');
+//for(let i=0; i<odd.length; i++){
+//   odd[i].style.backgroundColor = 'lightgrey';
+//   even[i].style.backgroundColor = 'darkgrey';
+//}
 /*Attention, the nth element must be in pairs, 
 *if no it'll return an erron in the console, even though it works.
 */
+
+
+//TRAVERSING THE DOM - PARENT NODE - CHILD NODE
+let itemList = document.querySelector('#items');
+//parentNode
+//console.log(itemList.parentNode);
+//itemList.parentNode.style.backgroundColor = '#f4f4f4';
+//console.log(itemList.parentNode.parentNode);
+
+//parentElement
+//console.log(itemList.parentElement);
+//itemList.parentElement.style.backgroundColor = '#f4f4f4';
+//console.log(itemList.parentElement.parentElement);
+
+//ParentNode and parentElement are interchangeble
+
+//childNode
+//console.log(itemList.childNodes); //childNodes add also a text (line break) in the element list, that can be problematic
+
+//The best is to use .children, which return a list element without the breaking line (text).
+//It's also an HTMLCollection, no longer a node list.
+//console.log(itemList.children);
+//console.log(itemList.children[1]);
+//itemList.children[1].style.backgroundColor = 'yellow';
+
+
+//firstChild will return a textNode beacause of the white space it encouter. Like chilNode
+//console.log(itemList.firstChild);
+
+//lastChild return olso a textNode
+//console.log(itemList.lastChild);
+
+
+//It'll be best to use firstElementChild, it'll return a siple element 
+//console.log(itemList.firstElementChild);
+//itemList.firstElementChild.textContent = 'Hello 1';
+
+//lastElementChild
+//console.log(itemList.lastElementChild);
+//itemList.lastElementChild.textContent = 'Hello 6';
+
+
+//Siblings elements
+//Next sibling return a textNode Because of the white space
+//console.log(itemList.nextSibling);
+//
+////We can use the nextElementSibiling
+//console.log(itemList.nextElementSibling);
+//
+////previous sibiling return also a textNode
+//console.log(itemList.previousSibling);
+//
+////previousElementSibiling
+//console.log(itemList.previousElementSibling);
+//itemList.previousElementSibling.style.color = 'red';
+//itemList.previousElementSibling.innerText = 'Liste element';
+
+
+//createElement
+ let newDiv = document.createElement('div');
+//add a class to the div
+ newDiv.className = 'hello';
+ //add id to the div
+ newDiv.id = 'hello1';
+ //add attribute
+ newDiv.setAttribute('title', 'Hello Div');
+
+ //create a text node
+ newDivText = document.createTextNode('Hello world');
+ newDiv.appendChild(newDivText);
+ 
+ //Add the new div in the dom
+ let container = document.querySelector('header .container')
+ let h1 = document.querySelector('header h1');
+ container.insertBefore(newDiv, h1);
+
+ newDiv.style.fontSize = '30px';
+
+ console.log(newDiv);
+
+
+
+
